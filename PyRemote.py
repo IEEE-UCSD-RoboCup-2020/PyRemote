@@ -7,10 +7,10 @@ RemoteCMD_Port = 6001
 # ...
 
 cmd = RemoteAPI_pb2.Commands()
-cmd.enable_ball_auto_capture = True
+cmd.enable_ball_auto_capture = False
 cmd.mode = 3
 cmd.is_world_frame = True
-cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z = 0, 0, 0
+cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z = 0, 0, 10.0
 cmd.kicker_set_point.x, cmd.kicker_set_point.y = 0, 0
 
 
