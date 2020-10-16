@@ -5,8 +5,10 @@ Remote control TritonBot program running locally or remotely via sockets.
 * python3
 * pip3
 * protoc 3.11 or above
+* pynput 
 ```
 pip3 install --upgrade protobuf
+pip3 install pynput
 ```
 
 ## Regenerate Proto Source Code (_pb2.py)
