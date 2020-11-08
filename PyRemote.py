@@ -17,7 +17,8 @@ cmd.kicker_set_point.x, cmd.kicker_set_point.y = 0, 0
 
 cmd_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-pwr = 60
+pwr = 80
+r_pwr = 15
 
 
 def on_press(key):
@@ -32,6 +33,12 @@ def on_press(key):
                 cmd.motion_set_point.x = -pwr
             if key.char == 'd':
                 cmd.motion_set_point.x = pwr
+        else:
+            if key == keyboard.Key.left: 
+                cmd.motion_set_point.z = r_pwr
+            if key == keyboard.Key.right:
+                cmd.motion_set_point.z = -r_pwr
+            
     except AttributeError:
         # print('special key {0} pressed'.format(key))
         pass        
@@ -48,7 +55,14 @@ def on_release(key):
             cmd.motion_set_point.x = 0
         if key.char == 'd':
             cmd.motion_set_point.x = 0
-    
+    else:
+        if key == keyboard.Key.left: 
+            cmd.motion_set_point.z = 0
+        if key == keyboard.Key.right:
+            cmd.motion_set_point.z = 0
+
+
+
 
 listener = keyboard.Listener(on_press=on_press, on_release=on_release)
 listener.start()
