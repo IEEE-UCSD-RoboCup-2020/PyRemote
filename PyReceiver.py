@@ -3,8 +3,9 @@ import RemoteAPI_pb2  # the _pb2 suffix here has nothing to do with proto versio
 
 PC_UDP_PORT = 6001
 
-print("[INFO] Please check the IPv4 address of your PC. (It should not be 127.0.0.1)")
-PC_UDP_IP = input("Please Enter Sender IPv4 (e.g. 127.0.0.1): ")
+print("[INFO] Since this script uses a UDP socket, it DOES NOT need to know the IP address of the sender. Instead, " + \
+      "you should provide the IP address of your local interface that the socket should be listening to.")
+PC_UDP_IP = input("Please Enter Local Interface IPv4 (e.g. 192.168.xx.xx): ")
 
 
 cmd_sock = socket.socket(socket.AF_INET, # Internet
