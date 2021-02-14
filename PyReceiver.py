@@ -16,6 +16,10 @@ ser.baudrate = 115200
 
 cmd_sock = socket.socket(socket.AF_INET, # Internet
                   socket.SOCK_DGRAM) # UDP
+
+if DEBUG:
+    print("[DEBUG] binding")
+
 cmd_sock.bind((PC_UDP_IP, PC_UDP_PORT))
 
 cmd = RemoteAPI_pb2.Commands()
@@ -31,7 +35,10 @@ while True:
         print("[DEBUG] successful receive from UDP socket")
         print("[DEBUG] writing to serial")
 
-    bytes_written = ser.write(data)
+    data_fake = 'nani'.encode()
+    sentinel = 'z'
+    sentinel_byte = str.encode(sentinel)
+    bytes_written = ser.write(data_fake+sentinel_byte)
 
     if DEBUG:
         print("[DEBUG] bytes written: %d", bytes_written)

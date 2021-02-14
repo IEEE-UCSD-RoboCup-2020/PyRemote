@@ -17,6 +17,7 @@ while True:
         print("[DEBUG] successful read from serial")
 
     data = data.rstrip()
+    print(data.decode())
 
-    cmd.ParseFromString(data)
-    print("<x, y, z>: [%f, %f, %f]", cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z)
+    # # cmd.ParseFromString(data)
+    # print("<x, y, z>: [%f, %f, %f]", cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z)
