@@ -15,3 +15,12 @@ pip3 install pynput
 
 ## Regenerate Proto Source Code (_pb2.py)
 Note:  the _pb2 suffix here has **nothing** to do with proto version
+
+
+## Finding your IP address:
+
+###On Windows:
+under powershell
+```
+Get-NetIPAddress
+```
