@@ -3,6 +3,7 @@ import RemoteAPI_pb2  # the _pb2 suffix here has nothing to do with proto versio
 import serial
 import time
 
+DEBUG = True
 PC_UDP_PORT = 6001
 
 print("[INFO] Writing to serial interface \'/dev/ttyACM0\'")
@@ -19,14 +20,31 @@ cmd_sock.bind((PC_UDP_IP, PC_UDP_PORT))
 
 cmd = RemoteAPI_pb2.Commands()
 
+if DEBUG:
+    print("[DEBUG] entering while loop")
+
 while True:
     data, addr = cmd_sock.recvfrom(1024) # buffer size is 1024 bytes
     # cmd.ParseFromString(data)
 
-    ser.write(data)
+    if DEBUG:
+        print("[DEBUG] successful receive from UDP socket")
+        print("[DEBUG] writing to serial")
+
+    bytes_written = ser.write(data)
+
+    if DEBUG:
+        print("[DEBUG] bytes written: %d", bytes_written)
 
     data2 = ser.readline()
+
+    if DEBUG:
+        print("[DEBUG] successful read from serial")
+
     data2 = data2.rstrip()
+
+    if DEBUG:
+        print("[DEBUG] strip done")
 
     cmd.ParseFromString(data2)
     print("<x, y, z>: [%f, %f, %f]", cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z)
