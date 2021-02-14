@@ -35,16 +35,3 @@ while True:
 
     if DEBUG:
         print("[DEBUG] bytes written: %d", bytes_written)
-
-    data2 = ser.readline()
-
-    if DEBUG:
-        print("[DEBUG] successful read from serial")
-
-    data2 = data2.rstrip()
-
-    if DEBUG:
-        print("[DEBUG] strip done")
-
-    cmd.ParseFromString(data2)
-    print("<x, y, z>: [%f, %f, %f]", cmd.motion_set_point.x, cmd.motion_set_point.y, cmd.motion_set_point.z)
