@@ -1,4 +1,4 @@
-import RemoteAPI_pb2  # the _pb2 suffix here has nothing to do with proto version, god knows why google named it this way lol
+# import RemoteAPI_pb2  # the _pb2 suffix here has nothing to do with proto version, god knows why google named it this way lol
 import socket
 import time
 from pynput import keyboard
@@ -8,9 +8,6 @@ TritonBot_IP = "127.0.0.1"
 RemoteCONN_Port = 6000
 RemoteCMD_Port = 6001
 GVisionServer_Port = 6003
-
-
-# ...
 
 def on_press(key):
     try:
